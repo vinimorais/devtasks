@@ -4,7 +4,6 @@ import { createContext, ReactNode, useContext } from 'react'
 import { Task } from '@/domain/entities/Task'
 import { useTaskManager } from '@/hooks/useTaskManager'
 
-// Tipagem do contexto
 interface TaskContextType {
   tasks: Task[]
   addTask: (task: Omit<Task, 'id' | 'createdAt'>) => void
@@ -13,10 +12,8 @@ interface TaskContextType {
   deleteTask: (id: string) => void
 }
 
-// Criando o contexto
 const TaskContext = createContext<TaskContextType | undefined>(undefined)
 
-// Provider
 interface TaskProviderProps {
   children: ReactNode
 }
@@ -33,7 +30,6 @@ export const TaskProvider = ({ children }: TaskProviderProps) => {
   )
 }
 
-// Hook para usar o contexto facilmente
 export const useTasksContext = (): TaskContextType => {
   const context = useContext(TaskContext)
   if (!context) {

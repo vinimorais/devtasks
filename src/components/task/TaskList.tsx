@@ -3,54 +3,76 @@
 import { FC, useState, useMemo } from 'react'
 import { useTasksContext } from '@/context/TaskContext'
 import { TaskCard } from './TaskCard'
-import { Priority, PRIORITY } from '@/domain/enums/TaskEnums'
+import { Priority, Status } from '@/domain/enums/TaskEnums'
+import {
+  PRIORITY_OPTIONS,
+  STATUS_OPTIONS,
+  PRIORITY_ORDER,
+} from '@/styles/task/TaskList.styles'
 
 export const TaskList: FC = () => {
   const { tasks } = useTasksContext()
 
-  // 1️⃣ Estado de filtro de prioridade
   const [filterPriority, setFilterPriority] = useState<Priority | 'all'>('all')
+  const [filterStatus, setFilterStatus] = useState<Status | 'all'>('all')
 
-  // 2️⃣ Definir ordem de prioridade (maior prioridade primeiro)
-  const priorityOrder: Record<Priority, number> = {
-    high: 0,
-    medium: 1,
-    low: 2,
-  }
-
-  // 3️⃣ Lista derivada: filtrada + ordenada
   const filteredTasks = useMemo(() => {
     return tasks
-      .filter(task => filterPriority === 'all' || task.priority === filterPriority)
-      .sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority])
-  }, [tasks, filterPriority])
+      .filter(
+        task =>
+          (filterPriority === 'all' || task.priority === filterPriority) &&
+          (filterStatus === 'all' || task.status === filterStatus)
+      )
+      .sort((a, b) => PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority])
+  }, [tasks, filterPriority, filterStatus])
 
-  // 4️⃣ Renderização
   if (tasks.length === 0)
     return <p className="text-gray-500">Nenhuma task cadastrada</p>
 
   return (
     <div className="flex flex-col gap-3">
-      {/* Filtros */}
-      <div className="flex gap-2 items-center mb-2">
-        <label className="text-sm font-medium text-gray-700">Filtrar por prioridade:</label>
-        <select
-          className="border rounded px-2 py-1 text-xs"
-          value={filterPriority}
-          onChange={e => setFilterPriority(e.target.value as Priority | 'all')}
-        >
-          <option value="all">Todas</option>
-          {Object.values(PRIORITY).map(p => (
-            <option key={p} value={p}>{p.toUpperCase()}</option>
-          ))}
-        </select>
+      <div className="flex flex-wrap gap-4 items-center mb-2">
+        <div className="flex gap-2 items-center">
+          <label className="text-sm font-medium text-gray-700">Prioridade:</label>
+          <select
+            className="border rounded px-2 py-1 text-xs"
+            value={filterPriority}
+            onChange={e =>
+              setFilterPriority(e.target.value as Priority | 'all')
+            }
+          >
+            <option value="all">Todas</option>
+            {PRIORITY_OPTIONS.map(p => (
+              <option key={p} value={p}>
+                {p.toUpperCase()}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="flex gap-2 items-center">
+          <label className="text-sm font-medium text-gray-700">Status:</label>
+          <select
+            className="border rounded px-2 py-1 text-xs"
+            value={filterStatus}
+            onChange={e => setFilterStatus(e.target.value as Status | 'all')}
+          >
+            <option value="all">Todos</option>
+            {STATUS_OPTIONS.map(s => (
+              <option key={s} value={s}>
+                {s.toUpperCase()}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
-      {/* Lista de Tasks */}
       <div className="grid gap-3">
-        {filteredTasks.map(task => (
-          <TaskCard key={task.id} task={task} />
-        ))}
+        {filteredTasks.length > 0 ? (
+          filteredTasks.map(task => <TaskCard key={task.id} task={task} />)
+        ) : (
+          <p className="text-sm text-gray-500">Nenhuma task encontrada.</p>
+        )}
       </div>
     </div>
   )
