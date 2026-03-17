@@ -48,13 +48,11 @@ export const TaskCard: FC<TaskCardProps> = ({ task }) => {
 
   return (
     <Card hoverable className={`flex flex-col gap-3 border-l-4 ${getCardBorderClass(task.priority)}`}>
-      {/* Header */}
       <div className="flex justify-between items-start gap-2">
         <h3 className="font-semibold text-gray-800 text-sm leading-snug">{task.title}</h3>
         <Badge text={task.priority.toUpperCase()} color={getBadgeColor(task.priority)} />
       </div>
 
-      {/* Description */}
       {isEditing ? (
         <Textarea
           label="Descrição"
@@ -66,11 +64,9 @@ export const TaskCard: FC<TaskCardProps> = ({ task }) => {
         <p className="text-sm text-gray-600 line-clamp-3">{task.description}</p>
       )}
 
-      {/* Footer */}
       <div className="flex justify-between items-center pt-2 border-t border-gray-100">
         {isEditing ? (
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full">
-            {/* Status */}
             <select
               className="border rounded px-2 py-1 text-xs"
               value={editedStatus}
@@ -81,7 +77,6 @@ export const TaskCard: FC<TaskCardProps> = ({ task }) => {
               ))}
             </select>
 
-            {/* Priority */}
             <select
               className="border rounded px-2 py-1 text-xs"
               value={editedPriority}

@@ -1,14 +1,17 @@
 import '@/styles/globals.css'
-import { ReactNode } from 'react'
+import { AuthProvider } from '@/context/AuthContext'
+import { TaskProvider } from '@/context/TaskContext' 
 
-interface RootLayoutProps {
-  children: ReactNode
-}
-
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>{children}</body>
+    <html lang="en">
+     <body suppressHydrationWarning>
+        <AuthProvider>
+          <TaskProvider>
+            {children}
+          </TaskProvider>
+        </AuthProvider>
+      </body>
     </html>
   )
 }
