@@ -4,7 +4,7 @@ export const PRIORITY_OPTIONS: Priority[] = Object.values(PRIORITY)
 export const STATUS_OPTIONS: Status[] = Object.values(STATUS)
 
 export const PRIORITY_ORDER: Record<Priority, number> = {
-  high: 0,
-  medium: 1,
-  low: 2,
+  alta: 0,
+  media: 1,
+  baixa: 2,
 }

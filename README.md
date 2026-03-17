@@ -12,12 +12,20 @@ Tailwind CSS - Estilização utilitária para uma interface rápida e responsiva
 
 ESLint - Padronização de código e boas práticas.
 
-✨ Funcionalidades (Exemplos - Ajuste conforme o seu código)
-[ ] Criação de Tarefas: Adicione tarefas rapidamente com categorias ou prioridades.
+✨ Funcionalidades Principais
+O sistema oferece uma experiência completa de gerenciamento:
 
-[ ] Dashboard Intuitivo: Visualização clara do que precisa ser feito.
+✅ Cadastro: Adicione novas tarefas de forma rápida e intuitiva.
 
-[ ] Responsividade: Interface adaptada para desktop e dispositivos móveis.
+📋 Listagem: Visualização clara de todas as tarefas pendentes e concluídas.
+
+✏️ Edição: Altere informações de tarefas existentes em tempo real.
+
+🗑️ Exclusão: Remova tarefas que não são mais necessárias.
+
+🔍 Filtros e Ordenação: Organize suas tarefas por prioridade, data ou status para focar no que importa.
+
+📊 Dashboard de Performance: Visualização gráfica do status das tarefas (Pendentes vs. Concluídas), facilitando a gestão do fluxo de trabalho.
 
 🛠️ Como Executar o Projeto
 Pré-requisitos

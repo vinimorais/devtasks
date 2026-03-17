@@ -5,22 +5,22 @@ export const STATUS_OPTIONS: Status[] = Object.values(STATUS)
 
 export const getCardBorderClass = (priority: Priority) => {
   switch (priority) {
-    case PRIORITY.HIGH:
+    case PRIORITY.ALTA:
       return 'border-red-500'
-    case PRIORITY.MEDIUM:
+    case PRIORITY.MEDIA:
       return 'border-yellow-400'
-    case PRIORITY.LOW:
+    case PRIORITY.BAIXA:
       return 'border-green-400'
   }
 }
 
 export const getBadgeColor = (priority: Priority) => {
   switch (priority) {
-    case PRIORITY.HIGH:
+    case PRIORITY.ALTA:
       return 'red'
-    case PRIORITY.MEDIUM:
+    case PRIORITY.MEDIA:
       return 'yellow'
-    case PRIORITY.LOW:
+    case PRIORITY.BAIXA:
       return 'green'
   }
 }

@@ -1,13 +1,13 @@
 export const PRIORITY = {
-  LOW: 'low',
-  MEDIUM: 'medium',
-  HIGH: 'high',
+  BAIXA: 'baixa',
+  MEDIA: 'media',
+  ALTA: 'alta',
 } as const
 
 export const STATUS = {
-  PENDING: 'pending',
-  IN_PROGRESS: 'in_progress',
-  DONE: 'done',
+  PENDENTE: 'pendente',
+  EM_PROGRESSO: 'em progresso',
+  CONCLUIDO: 'concluido',
 } as const
 
 export type Priority = typeof PRIORITY[keyof typeof PRIORITY]

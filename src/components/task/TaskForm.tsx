@@ -11,8 +11,8 @@ export const TaskForm: FC = () => {
 
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-  const [priority, setPriority] = useState<Priority>('low')
-  const [status, setStatus] = useState<Status>('pending')
+  const [priority, setPriority] = useState<Priority>('baixa')
+  const [status, setStatus] = useState<Status>('pendente')
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -20,8 +20,8 @@ export const TaskForm: FC = () => {
     addTask({ title, description, priority, status })
     setTitle('')
     setDescription('')
-    setPriority('low')
-    setStatus('pending')
+    setPriority('baixa')
+    setStatus('pendente')
   }
 
   return (
@@ -38,9 +38,9 @@ export const TaskForm: FC = () => {
           onChange={e => setPriority(e.target.value as Priority)}
           className="border rounded px-2 py-1"
         >
-          <option value="low">Baixa</option>
-          <option value="medium">Média</option>
-          <option value="high">Alta</option>
+          <option value="baixa">Baixa</option>
+          <option value="media">Média</option>
+          <option value="alta">Alta</option>
         </select>
 
         <select
@@ -48,9 +48,9 @@ export const TaskForm: FC = () => {
           onChange={e => setStatus(e.target.value as Status)}
           className="border rounded px-2 py-1"
         >
-          <option value="pending">Pendente</option>
-          <option value="in_progress">Em progresso</option>
-          <option value="done">Concluída</option>
+          <option value="pendete">Pendente</option>
+          <option value="em progresso">Em progresso</option>
+          <option value="concluido">Concluída</option>
         </select>
       </div>
       <Button type="submit" variant="primary">Adicionar Task</Button>
